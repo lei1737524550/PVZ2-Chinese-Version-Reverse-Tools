@@ -1,78 +1,79 @@
-# PvZ2 Resource Tool
+# PVZ2 Tools
 
-一个用于《Plants vs. Zombies 2》(国服)资源文件拆包、转换、回包与工程反向回包的 Python 工具。
+一个面向《Plants vs. Zombies 2》Android 资源研究与玩家数据处理的 Python 工具集。
 
-项目主要用于研究以下资源转换链：
+## 环境与兼容性
+
+- Python 3.13
+- 主要在 Android / Termux 环境开发和测试
+- 主要测试游戏版本：PvZ2 4.1.9 / 4.2.3
+- 部分 Android 文件访问功能会用到 Shizuku、rish、A Shell / Termux 等环境
+
+不同游戏版本之间可能存在资源结构、数据地址、MD5 或硬编码参数差异。因此部分版本相关数据可能失效，但格式解析、转换及主要算法逻辑仍可作为参考。
+
+## 项目组成
+
+### Resource_Tool
+
+游戏资源拆包、转换和回包工具，主要处理：
 
 ```text
 SMF / RSLB ↔ RSB ↔ RSG ↔ encrypted RTON ↔ RTON ↔ JSON
 ```
 
-## 环境
-
-- Python 3.13
-- 主要在 Android / Termux 环境开发和测试
-- 当前代码仅使用 Python 标准库，无需安装第三方 Python 依赖
-
-## 版本说明
-
-本项目主要基于 PvZ2 **4.1.9 / 4.2.3** 的资源进行研究和测试。
-
-不同游戏版本之间可能存在资源结构、MD5、数据布局或其他版本相关差异，因此不能保证所有文件在其他版本中都能直接处理。格式解析、转换和回包的主要算法逻辑仍可作为参考。
-
-## 使用
-
-直接运行：
+运行：
 
 ```bash
+cd Resource_Tool
 python main.py
 ```
 
-不带参数时进入交互模式。
-
-查看命令行帮助：
+查看参数：
 
 ```bash
 python main.py --help
 ```
 
-示例：
+### Player_Tool
 
-```bash
-python main.py -unpack dynamic.rsb.smf -json -j 4
-python main.py -pack /path/to/04_JSON -rsb -j 4
-python main.py -pack /path/to/04_JSON -smf -j 4
-python main.py -reverse /path/to/project
-```
+玩家数据工具，围绕 `pp.dat / pp.json` 提供转换、查看及数据管理功能，包括植物、等级、碎片、PCPID 与相关数据验证。
 
-`-j` 用于指定并发数；Android 手机上通常建议使用 2~4。
-
-## 目录结构
+默认 JSON 工作位置使用：
 
 ```text
-app/            CLI 与交互入口
-binary_codecs/  SMF / RSLB 二进制编解码
-config/         配置加载与校验
-converters/     RSB / RSG / RTON / JSON 转换
-core/           底层格式、加密与编解码算法
-domain/         格式定义与异常
-infrastructure/ 文件、路径、哈希与并发辅助
-project/        工程目录、index.md 与反向回包
-services/       打包 / 解包流程编排
-docs/           补充说明
-main.py         唯一直接执行入口
-params.json     工具配置
+PVZ_Json/pp.json
+```
+
+运行：
+
+```bash
+cd Player_Tool
+python main.py
+```
+
+查看参数：
+
+```bash
+python main.py --help
 ```
 
 ## 当前限制
 
-- 部分格式或特殊资源可能仍存在未覆盖的边界情况。
-- PAM 等未实现的资源转换逻辑不在当前工具支持范围内。
-- 版本相关的资源结构或参数可能需要针对具体游戏版本重新验证。
-- 建议在回包前后使用工具提供的验证功能检查结果。
+- PAM 等部分资源转换逻辑尚未实现。
+- 版本相关的地址、MD5、数据结构和参数需要针对具体游戏版本重新验证。
+- Android 集成功能取决于设备权限和 Shizuku/rish 等本地环境。
+- 本项目不包含游戏本体或商业资源文件。
 
-## 项目原则
+## 目录
 
-`main.py` 是唯一直接执行入口。业务流程、格式转换和底层二进制算法分别放在独立模块中，避免把所有逻辑集中在单一脚本。
-
-本仓库提供的是研究和资源处理工具，不包含游戏本体或商业资源文件。
+```text
+PVZ2-Tools/
+├── README.md
+├── .gitignore
+├── Resource_Tool/
+│   ├── main.py
+│   └── ...
+└── Player_Tool/
+    ├── main.py
+    └── ...
+```

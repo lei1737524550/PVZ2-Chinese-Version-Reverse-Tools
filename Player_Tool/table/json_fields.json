@@ -1,0 +1,57 @@
+{
+  "p": {
+    "name": "已拥有植物",
+    "description": "PlayerInfo 中已拥有植物的 JSON ID 数组",
+    "value_type": "plant_json_id[]"
+  },
+  "psla": {
+    "name": "植物等级记录",
+    "description": "PlayerInfo 中的植物等级记录数组；顺序参与 psls 计算",
+    "value_type": "object[]"
+  },
+  "psla.icpi": {
+    "name": "植物 JSON ID",
+    "description": "psla 单条等级记录对应的植物 JSON ID",
+    "value_type": "plant_json_id"
+  },
+  "psla.icl": {
+    "name": "植物等级",
+    "description": "psla 单条等级记录中的等级值",
+    "value_type": "integer"
+  },
+  "psls": {
+    "name": "植物等级完整性摘要",
+    "description": "由 PCPID、rs、psla、snuuid 按当前已验证规则计算的 MD5 摘要",
+    "value_type": "string"
+  },
+  "ppr": {
+    "name": "植物碎片记录",
+    "description": "PlayerInfo 中的植物碎片数量记录数组；顺序参与 pprs 计算",
+    "value_type": "object[]"
+  },
+  "ppr.pi": {
+    "name": "植物 JSON ID",
+    "description": "ppr 单条碎片记录对应的植物 JSON ID",
+    "value_type": "plant_json_id"
+  },
+  "ppr.pc": {
+    "name": "植物碎片数量",
+    "description": "ppr 单条碎片记录中的碎片数量",
+    "value_type": "integer"
+  },
+  "pprs": {
+    "name": "植物碎片完整性摘要",
+    "description": "由 PCPID、rs、ppr、snuuid 按当前已验证规则计算的 MD5 摘要",
+    "value_type": "string"
+  },
+  "rs": {
+    "name": "签名输入 rs",
+    "description": "pprs/psls 计算共同使用的 PlayerInfo 整数字段",
+    "value_type": "integer"
+  },
+  "snuuid": {
+    "name": "签名输入 snuuid",
+    "description": "pprs/psls 计算共同使用的 PlayerInfo 字符串字段",
+    "value_type": "string"
+  }
+}

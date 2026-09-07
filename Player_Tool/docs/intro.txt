@@ -1,0 +1,13 @@
+PVZ Player Tool：pp.dat / pp.json 与植物数据统一工具。
+
+已合并原 Tool_2 与 Tool_3：
+- pp.dat <-> pp.json 导入导出
+- 查看/对比存档
+- 植物拥有状态、碎片、等级操作
+- pprs / psls 签名验证与自动重算
+- PCPID 获取/刷新
+
+主入口：main.py
+配置：params.json
+植物与字段数据表：table/
+默认数据目录：PVZ_Json/

@@ -1,0 +1,24 @@
+{
+  "android": {
+    "package": "com.popcap.pvz2cthd4399",
+    "game_dat": "files/No_Backup/pp.dat",
+    "game_backup": "files/No_Backup/pp.dat.bak",
+    "rish": "rish",
+    "write_game_backup": true,
+    "force_stop_game": true
+  },
+  "files": {
+    "export_dat": "pp.dat",
+    "export_bin": "pp.bin",
+    "export_json": "pp.json",
+    "import_bin": "changed.bin",
+    "import_dat": "changed.dat",
+    "diff_before": "pp_before.json",
+    "diff_after": "pp.json",
+    "diff_output": "pp_diff.txt"
+  },
+  "rton": {
+    "encryption_seed": "com_popcap_pvz2_magento_product_2013_05_05",
+    "block_size": 24
+  }
+}
