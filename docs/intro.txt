@@ -1,0 +1,19 @@
+PvZ2 Resource Tool：PvZ2 资源包打包、解包与工程回包工具。
+
+职责边界：
+- main.py：唯一直接执行入口，不承载业务实现。
+- app/：命令行参数与交互菜单。
+- services/：打包、解包主流程，只负责业务编排。
+- project/：工程阶段目录、index.md、基础 RSB/RSG/SMF 定位。
+- domain/：资源格式定义、格式识别、领域异常。
+- converters/：RSB、RSG、RTON、JSON 的文件级转换与验证。
+- binary_codecs/：SMF/RSLB 的二进制编解码。
+- core/：RTON、RSG、RSB、Rijndael 等底层格式算法。
+- infrastructure/：文件复制、哈希、路径验证、并发数等基础设施。
+- config/：把根 params.json 转换为强类型只读配置。
+
+配置规则：
+项目只保留根目录一个 params.json，不再从 converters/ 或 core/ 隐式读取局部配置。
+
+执行规则：
+只有 main.py 作为直接执行入口。内部模块统一使用同一种导入方式，不再使用“相对导入失败后改用绝对导入”的双重回退逻辑。

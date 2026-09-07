@@ -1,0 +1,34 @@
+{
+  "smf": {
+    "rslb_version": 1,
+    "chunk_size": 33554432,
+    "fixed_header_size": 48,
+    "base_entry_size": 20,
+    "link_size": 16,
+    "known_size_field_styles": [
+      "auto",
+      "total",
+      "chunk"
+    ],
+    "default_size_field_style": "chunk"
+  },
+  "index": {
+    "hash_workers": 4
+  },
+  "conversion": {
+    "rton_encryption_seed": "com_popcap_pvz2_magento_product_2013_05_05",
+    "rton_block_size": 24,
+    "rsg_name_prefixes": [],
+    "rsg_name_suffixes": [],
+    "internal_path_prefixes": [],
+    "internal_path_suffixes": [],
+    "json_indent": 4,
+    "json_ensure_ascii": false,
+    "json_sort_keys": false,
+    "json_sort_values": false,
+    "json_repair_files": false
+  },
+  "filesystem": {
+    "ficlone_ioctl": 1074041865
+  }
+}
